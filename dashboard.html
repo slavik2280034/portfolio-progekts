@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Особистий кабінет</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background: #eef;
+      padding: 40px;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #aaa;
+      display: inline-block;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>👋 Вітаємо в кабінеті!</h1>
+    <p>Це сторінка після входу.</p>
+    <p><strong>Ім'я користувача:</strong> <span id="username">Гість</span></p>
+    <button onclick="logout()">Вийти</button>
+  </div>
+
+  <script>
+    // У реальному сайті можна зберігати ім'я у localStorage (тимчасово)
+    const username = localStorage.getItem("loggedUser");
+    if (username) {
+      document.getElementById("username").innerText = username;
+    } else {
+      // Якщо нема даних — назад на login
+      window.location.href = "index.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedUser");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
